@@ -1,0 +1,77 @@
+#utf-8 
+
+secreta = "paralelepipedo"
+dicas = ["é encontrado nas ruas", "feito de concreto", "geralmente, encontra-se em calçadas", ""]
+lista = []
+chances = 3
+c_dicas = 3
+while True:
+
+    
+    if c_dicas == 3:
+        print(dicas[0])
+            
+    elif c_dicas == 2:
+        print(dicas[1])
+            
+    else:
+        print(dicas[2])
+    c_dicas -= 1
+        
+    digitado = input(f"Digite uma letra você pode errar {chances} vez(es): ")
+    
+    
+    if len(digitado) > 1:
+        print("Você só pode tentar uma única letra por vez")
+        continue
+    
+
+    
+            
+    for letra in digitado:
+        if letra in lista:
+            print(f"Você já digitou a letra {letra}.")
+            
+        
+        if letra in secreta:
+            print(f'A letra "{letra}" contém na palavra')
+            
+            lista.append(letra)
+        else:
+            print(f"A letra {letra} não está na palavra")
+            chances -= 1
+            continue        
+    
+    
+    
+    secreto_temporario = ""
+    
+    for letra_secreta in secreta:
+            if letra_secreta in lista:
+                secreto_temporario += letra_secreta
+            
+            else:
+                secreto_temporario += "*"
+                
+    print(secreto_temporario)
+    print()         
+    
+
+
+    if chances == 0:
+        resultado = input("Você não tem mais chances. Qual é a palavra secreta?: ")
+        
+               
+        if resultado == secreta:
+            print(f"Parabéns, Você acertou! A palavra era {secreta}")
+            break
+        
+        else:
+            print(f"Que pena! Você não acertou. A palavra era {secreta}")
+            print(resultado == secreta)
+            print(secreta)
+            break              
+
+                
+
+        
